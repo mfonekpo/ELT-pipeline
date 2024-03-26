@@ -234,7 +234,6 @@ def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 3):
 
     for page in range(1, pages+1):
         print(f"Extracting data from page{page}")
-        # try:
         soup = fetch_page(url, page)
         names = parse_names(soup, name_tag)
         locations = parse_locations(soup, location_tag)
@@ -245,8 +244,6 @@ def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 3):
         dict_data = add_data_to_dict(names, locations, categories, descriptions, likes, urls)
         load_to_db(dict_data)
         load_to_csv(dict_data)
-        # except Exception as e:
-        #     logger.error(e)
 
 
     return dict_data
