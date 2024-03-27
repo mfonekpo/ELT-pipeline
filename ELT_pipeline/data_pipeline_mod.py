@@ -64,7 +64,7 @@ def parse_names(soup, name_tag:str):
     log_prints=True,
     retries=3
     # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    # cache_expiration=timedelta(minutes=20)
 )
 def parse_locations(soup, location_tag:str):
     logger = get_run_logger()
@@ -250,4 +250,8 @@ def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 3):
 
 
 if __name__ == "__main__":
-    main_flow()
+    main_flow.serve(
+        name="etl_deployement_v0.1",
+        tags=["ETL"],
+        description="Interesting sigths in Nigeria ELT flow"
+    )
