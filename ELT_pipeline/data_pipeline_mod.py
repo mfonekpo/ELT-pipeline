@@ -25,9 +25,9 @@ urls = []
 @task(
     name="fetch_page",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def fetch_page(url, page):
     logger = get_run_logger()
@@ -44,9 +44,9 @@ def fetch_page(url, page):
 @task(
     name="parse_names",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def parse_names(soup, name_tag:str):
     logger = get_run_logger()
@@ -62,9 +62,9 @@ def parse_names(soup, name_tag:str):
 @task(
     name="parse_locations",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def parse_locations(soup, location_tag:str):
     logger = get_run_logger()
@@ -81,9 +81,9 @@ def parse_locations(soup, location_tag:str):
 @task(
     name="parse_categories",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def parse_categories(soup, category_tag:str):
     logger = get_run_logger()
@@ -100,9 +100,9 @@ def parse_categories(soup, category_tag:str):
 @task(
     name="parse_descriptions",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def parse_descriptions(soup, description_tag:str):
     logger = get_run_logger()
@@ -119,9 +119,9 @@ def parse_descriptions(soup, description_tag:str):
 @task(
     name="parse_likes",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def parse_likes(soup, like_tag:str):
     logger = get_run_logger()
@@ -138,9 +138,9 @@ def parse_likes(soup, like_tag:str):
 @task(
     name="parse_urls",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def parse_urls(soup, url_tag:str):
     logger = get_run_logger()
@@ -158,9 +158,9 @@ def parse_urls(soup, url_tag:str):
 @task(
     name="add_data_to_dict",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def add_data_to_dict(names, locations, categories, descriptions, likes, urls):
     logger = get_run_logger()
@@ -184,9 +184,9 @@ def add_data_to_dict(names, locations, categories, descriptions, likes, urls):
 @task(
     name="load_to_db",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def load_to_db(dict_data):
     logger = get_run_logger()
@@ -207,9 +207,9 @@ def load_to_db(dict_data):
 @task(
     name="load_to_csv",
     log_prints=True,
-    retries=3
-    # cache_key_fn=task_input_hash,
-    # cache_expiration=timedelta(days=1)
+    retries=3,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(days=1)
 )
 def load_to_csv(dict_data):
     logger = get_run_logger()
