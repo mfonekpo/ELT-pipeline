@@ -1,9 +1,6 @@
 from bs4 import BeautifulSoup as bs
 from prefect import task, flow, get_run_logger
 from prefect.tasks import task_input_hash
-from prefect.task_runners import SequentialTaskRunner
-# from prefect_dask import DaskTaskRunner
-from prefect.schedules import IntervalSchedule
 from datetime import timedelta
 import requests
 import sqlite3
@@ -256,5 +253,4 @@ if __name__ == "__main__":
         tags=["ETL"],
         description="Interesting sigths in Nigeria ELT flow",
         version=0.1,
-        schedule=schedule
     )
