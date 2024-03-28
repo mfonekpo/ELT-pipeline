@@ -253,6 +253,8 @@ if __name__ == "__main__":
     main_flow().serve(
         name="etl_deployement_v0.1",
         tags=["ETL"],
-        description="Interesting sigths in Nigeria ELT flow"
-        schedules=[CronSchedule(interval="60", timezone="UTC")]
+        description="Interesting sigths in Nigeria ELT flow",
+        entrypoint = "data_pipeline_mod.py:main_flow",
+        schedule=timedelta(minutes=1),
+        version=0.1
     )
