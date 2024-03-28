@@ -19,7 +19,8 @@ categories = []
 descriptions = []
 likes = []
 urls = []
-schedule = IntervalSchedule(interval=timedelta(minutes=15))
+
+
 @task(
     name="fetch_page",
     log_prints=True,
