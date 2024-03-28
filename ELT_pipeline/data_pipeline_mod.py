@@ -3,6 +3,7 @@ from prefect import task, flow, get_run_logger
 from prefect.tasks import task_input_hash
 from prefect.task_runners import SequentialTaskRunner
 # from prefect_dask import DaskTaskRunner
+from prefect.schedules import IntervalSchedule
 from datetime import timedelta
 import requests
 import sqlite3
@@ -21,7 +22,7 @@ categories = []
 descriptions = []
 likes = []
 urls = []
-
+schedule = IntervalSchedule(interval=timedelta(minutes=15))
 @task(
     name="fetch_page",
     log_prints=True,
@@ -254,7 +255,6 @@ if __name__ == "__main__":
         name="etl_deployement_v0.1",
         tags=["ETL"],
         description="Interesting sigths in Nigeria ELT flow",
-        entrypoint = "data_pipeline_mod.py:main_flow",
-        schedule=timedelta(minutes=1),
-        version=0.1
+        version=0.1,
+        schedule=schedule
     )
