@@ -222,7 +222,7 @@ def load_to_csv(dict_data):
 
 
 @flow(name = "Interesting places extraction pipeline", log_prints=True)
-def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 3):
+def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 365):
     logger = get_run_logger()
     name_tag = "a > h2"
     location_tag = ("div", {"class":"category-de01"})
@@ -250,8 +250,9 @@ def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 3):
 
 
 if __name__ == "__main__":
-    main_flow.serve(
+    main_flow().serve(
         name="etl_deployement_v0.1",
         tags=["ETL"],
         description="Interesting sigths in Nigeria ELT flow"
+        schedules=[CronSchedule(interval="60", timezone="UTC")]
     )
