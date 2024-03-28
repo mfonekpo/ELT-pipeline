@@ -248,9 +248,4 @@ def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 365):
 
 
 if __name__ == "__main__":
-    main_flow().serve(
-        name="etl_deployement_v0.1",
-        tags=["ETL"],
-        description="Interesting sigths in Nigeria ELT flow",
-        version=0.1,
-    )
+    main_flow()
