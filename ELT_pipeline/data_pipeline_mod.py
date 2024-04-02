@@ -191,6 +191,7 @@ def load_to_db(dict_data):
     logger = get_run_logger()
     try:
         logger.info("Loading data to database")
+        logger.info(os.getcwd())
         conn = sqlite3.connect("../datafiles/data.db")
         df = pd.DataFrame(dict_data)
         df.to_sql("data", conn, if_exists="replace", index = False)
