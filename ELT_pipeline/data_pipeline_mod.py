@@ -190,8 +190,16 @@ def add_data_to_dict(names, locations, categories, descriptions, likes, urls):
 def load_to_db(dict_data):
     logger = get_run_logger()
     try:
+        csv_path = "./datafiles/data.db"
+        dir_name = os.path.dirname(csv_path)
+
+        # Create the directory if it doesn't exist
+        if not os.path.exists(dir_name):
+            logger.info(f"Creating directory: {dir_name}")
+            os.makedirs(dir_name)
+
         logger.info("Loading data to database")
-        conn = sqlite3.connect("../datafiles/data.db")
+        conn = sqlite3.connect("./datafiles/data.db")
         df = pd.DataFrame(dict_data)
         df.to_sql("data", conn, if_exists="replace", index = False)
         conn.close()
@@ -212,10 +220,17 @@ def load_to_db(dict_data):
 )
 def load_to_csv(dict_data):
     logger = get_run_logger()
-    print(f"environment_directory: {os.getcwd()}")
+    # print(f"environment_directory: {os.getcwd()}")
+    csv_path = "./datafiles/data.csv"
+    dir_name = os.path.dirname(csv_path)
+
+    # Create the directory if it doesn't exist
+    if not os.path.exists(dir_name):
+        logger.info(f"Creating directory: {dir_name}")
+        os.makedirs("./datafiles/data.csv")
     logger.info("Loading data to csv")
     df = pd.DataFrame(dict_data)
-    df.to_csv("../datafiles/data.csv", index = False)
+    df.to_csv(dir_name, index = False)
     logger.info("Data loaded successfully")
     return df
 
