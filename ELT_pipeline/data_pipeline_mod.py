@@ -191,7 +191,6 @@ def load_to_db(dict_data):
     logger = get_run_logger()
     try:
         logger.info("Loading data to database")
-        logger.info(os.getcwd())
         conn = sqlite3.connect("../datafiles/data.db")
         df = pd.DataFrame(dict_data)
         df.to_sql("data", conn, if_exists="replace", index = False)
@@ -213,7 +212,6 @@ def load_to_db(dict_data):
 )
 def load_to_csv(dict_data):
     logger = get_run_logger()
-    logger.info(os.getcwd())
     logger.info("Loading data to csv")
     df = pd.DataFrame(dict_data)
     df.to_csv("../datafiles/data.csv", index = False)

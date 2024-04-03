@@ -1,5 +1,5 @@
 *.env
 eltenv/
-*.csv
-*.db
+# *.csv
+# *.db
 *.yaml
