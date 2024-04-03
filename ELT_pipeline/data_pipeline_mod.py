@@ -212,7 +212,7 @@ def load_to_db(dict_data):
 )
 def load_to_csv(dict_data):
     logger = get_run_logger()
-    print(os.getcwd())
+    print(f"environment_directory: {os.getcwd()}")
     logger.info("Loading data to csv")
     df = pd.DataFrame(dict_data)
     df.to_csv("../datafiles/data.csv", index = False)
@@ -223,7 +223,7 @@ def load_to_csv(dict_data):
 
 @flow(name = "Interesting places extraction pipeline", log_prints=True)
 def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 3):
-    logger = get_run_logger()
+    # logger = get_run_logger()
     name_tag = "a > h2"
     location_tag = ("div", {"class":"category-de01"})
     category_tag = "div", {"class":"category-de01"}
