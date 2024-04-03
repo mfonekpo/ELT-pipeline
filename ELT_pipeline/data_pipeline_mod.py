@@ -220,7 +220,7 @@ def load_to_db(dict_data):
 )
 def load_to_csv(dict_data):
     logger = get_run_logger()
-    # print(f"environment_directory: {os.getcwd()}")
+    print(f"environment_directory: {os.getcwd()}")
     csv_path = "./datafiles/data.csv"
     dir_name = os.path.dirname(csv_path)
 
