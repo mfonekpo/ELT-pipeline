@@ -242,8 +242,8 @@ def main_flow(url = "https://hotels.ng/places/nigeria-1/", pages = 3):
         likes = parse_likes(soup, like_tag)
         urls = parse_urls(soup, url_tag, return_state=True)
         dict_data = add_data_to_dict(names, locations, categories, descriptions, likes, urls)
-        load_to_db(dict_data)
         load_to_csv(dict_data)
+        load_to_db(dict_data)
 
 
     return dict_data
