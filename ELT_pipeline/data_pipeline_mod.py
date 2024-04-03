@@ -213,6 +213,7 @@ def load_to_db(dict_data):
 )
 def load_to_csv(dict_data):
     logger = get_run_logger()
+    logger.info(os.getcwd())
     logger.info("Loading data to csv")
     df = pd.DataFrame(dict_data)
     df.to_csv("../datafiles/data.csv", index = False)
