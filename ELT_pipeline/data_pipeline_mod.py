@@ -190,7 +190,7 @@ def add_data_to_dict(names, locations, categories, descriptions, likes, urls):
 def load_to_db(dict_data):
     logger = get_run_logger()
     try:
-        csv_path = "./datafiles/data.db"
+        csv_path = "/datafiles/data.db"
         dir_name = os.path.dirname(csv_path)
 
         # Create the directory if it doesn't exist
@@ -224,7 +224,7 @@ def load_to_csv(dict_data):
     print(f"List directories from current directory: {os.listdir()}")
     print(f"list of directories one level up: {os.listdir('../')}")
 
-    csv_path = "./datafiles/data.csv"
+    csv_path = "/datafiles/data.csv"
     dir_name = os.path.dirname(csv_path)
 
     # Create the directory if it doesn't exist
