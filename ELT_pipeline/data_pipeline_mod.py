@@ -196,7 +196,7 @@ def load_to_db(dict_data):
         # Create the directory if it doesn't exist
         if not os.path.exists(dir_name):
             logger.info(f"Creating directory: {dir_name}")
-            os.makedirs(dir_name)
+            os.mkdir(dir_name)
 
         logger.info("Loading data to database")
         conn = sqlite3.connect("./datafiles/data.db")
@@ -230,7 +230,7 @@ def load_to_csv(dict_data):
     # Create the directory if it doesn't exist
     if not os.path.exists(dir_name):
         logger.info(f"Creating directory: {dir_name}")
-        os.makedirs("./datafiles/data.csv")
+        os.mkdir(dir_name)
     logger.info("Loading data to csv")
     df = pd.DataFrame(dict_data)
     df.to_csv(dir_name, index = False)
