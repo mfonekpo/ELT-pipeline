@@ -226,6 +226,7 @@ def load_to_csv(dict_data):
 
     csv_path = "/datafiles/data.csv"
     dir_name = os.path.dirname(csv_path)
+    print(dir_name)
 
     # Create the directory if it doesn't exist
     if not os.path.exists(dir_name):
