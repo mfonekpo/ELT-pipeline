@@ -243,7 +243,7 @@ def load_to_csv(dict_data):
     # Create the directory if it doesn't exist
     if not os.path.exists(dir_name):
         logger.info(f"Creating directory: {dir_name}")
-        # os.mkdir(dir_name)
+        os.makedirs(dir_name)
         # print(dir_name)
     logger.info("Loading data to csv")
     df = pd.DataFrame(dict_data)
