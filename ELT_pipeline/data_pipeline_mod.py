@@ -227,9 +227,9 @@ def load_to_csv(dict_data):
     # print(f"list of directories one level up: {os.listdir('../')}")
 
     # csv_path = "/datafiles/data.csv"
-    fss = LocalFileSystem(basepath="/datafiles")
+    fss = LocalFileSystem(basepath="../datafiles")
 
-    dir_name = fss.get_directory("datafiles")
+    dir_name = fss.get_directory("../datafiles")
     csv_path = os.path.join(dir_name, "data.csv")
 
     print(f"directory_name: {dir_name}")
