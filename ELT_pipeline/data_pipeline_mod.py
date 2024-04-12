@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 from prefect import task, flow, get_run_logger
 from prefect.tasks import task_input_hash
+from prefect.filesystems import LocalFileSystem as fss
 from datetime import timedelta
 import requests
 import sqlite3
@@ -12,6 +13,8 @@ import datetime
 
 
 base_url = "https://hotels.ng"
+
+lfsBlock = LocalFileSystem.load("datastorage")
 
 names = []
 locations = []
@@ -220,22 +223,27 @@ def load_to_db(dict_data):
 )
 def load_to_csv(dict_data):
     logger = get_run_logger()
-    print(f"environment_directory: {os.getcwd()}")
-    print(f"List directories from current directory: {os.listdir()}")
-    print(f"list of directories one level up: {os.listdir('../')}")
+    # print(f"environment_directory: {os.getcwd()}")
+    # print(f"List directories from current directory: {os.listdir()}")
+    # print(f"list of directories one level up: {os.listdir('../')}")
 
     # csv_path = "/datafiles/data.csv"
+    dir_name = fss.get_directory()
+    block_dir = fss.get_directory(lfsBlock)
+
+    print(f"directory_name: {dir_name}")
+    print(f"block_directory: {block_dir}")
 
 
     # dir_name = os.path.dirname(csv_path)
     # print(dir_name)
 
-    dir_name = os.path.join(os.getenv('environment_directory'), 'datafiles')
+    # dir_name = os.path.join(os.getenv('environment_directory'), 'datafiles')
     # Create the directory if it doesn't exist
     if not os.path.exists(dir_name):
         logger.info(f"Creating directory: {dir_name}")
-        os.mkdir(dir_name)
-        print(dir_name)
+        # os.mkdir(dir_name)
+        # print(dir_name)
     logger.info("Loading data to csv")
     df = pd.DataFrame(dict_data)
     df.to_csv(dir_name, index = False)
