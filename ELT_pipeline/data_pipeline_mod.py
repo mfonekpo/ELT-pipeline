@@ -229,7 +229,7 @@ def load_to_csv(dict_data):
     # csv_path = "/datafiles/data.csv"
     fss = LocalFileSystem(basepath="../datafiles")
 
-    dir_name = fss.get_directory("../datafiles")
+    dir_name = fss.get_directory(".")
     csv_path = os.path.join(dir_name, "data.csv")
 
     print(f"directory_name: {dir_name}")
