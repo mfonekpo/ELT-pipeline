@@ -14,7 +14,7 @@ import datetime
 
 base_url = "https://hotels.ng"
 
-lfsBlock = LocalFileSystem.load("datastorage")
+lfsBlock = fss.load("datastorage")
 
 names = []
 locations = []
