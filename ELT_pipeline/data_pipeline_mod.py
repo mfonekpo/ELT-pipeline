@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
 from prefect import task, flow, get_run_logger
 from prefect.tasks import task_input_hash
-from prefect.filesystems import LocalFileSystem as fss
+from prefect.filesystems import LocalFileSystem
 from datetime import timedelta
 import requests
 import sqlite3
@@ -228,11 +228,13 @@ def load_to_csv(dict_data):
     # print(f"list of directories one level up: {os.listdir('../')}")
 
     # csv_path = "/datafiles/data.csv"
-    dir_name = fss.get_directory()
-    block_dir = fss.get_directory("datastorage")
+    fss = LocalFileSystem(basepath="/datafiles")
+
+    dir_name = fss.get_directory("datafiles")
+    csv_path = os.path.join(dir_name, "data.csv")
 
     print(f"directory_name: {dir_name}")
-    print(f"block_directory: {block_dir}")
+    print(f"block_directory: {csv_path}")
 
 
     # dir_name = os.path.dirname(csv_path)
