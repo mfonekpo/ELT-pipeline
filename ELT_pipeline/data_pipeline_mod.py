@@ -229,7 +229,7 @@ def load_to_csv(dict_data):
 
     # csv_path = "/datafiles/data.csv"
     dir_name = fss.get_directory()
-    block_dir = fss.get_directory(lfsBlock)
+    block_dir = fss.get_directory("datastorage")
 
     print(f"directory_name: {dir_name}")
     print(f"block_directory: {block_dir}")
